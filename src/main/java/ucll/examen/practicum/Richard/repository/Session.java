@@ -25,12 +25,7 @@ public class Session {
 
     @ManyToOne
     @JoinColumn( name = "course_id", nullable = false)
-            private Course course;
-
-//            name = "person_course",
-//            joinColumns = { @JoinColumn(name = "person_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "course_id")}
-//    )
+    private Course courses;
 
     public Session() {
     }
@@ -40,7 +35,7 @@ public class Session {
         this.course_ID = course_ID;
         this.start_date_time = start_date_time;
         this.end_date_time = end_date_time;
-        this.course = course1;
+
     }
 
     public Long getId() {
@@ -75,13 +70,6 @@ public class Session {
         this.end_date_time = end_date_time;
     }
 
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
 
     @Override
     public String toString() {
@@ -90,7 +78,6 @@ public class Session {
                 ", course_ID=" + course_ID +
                 ", start_date_time=" + start_date_time +
                 ", end_date_time=" + end_date_time +
-                ", course=" + course +
                 '}';
     }
 }
