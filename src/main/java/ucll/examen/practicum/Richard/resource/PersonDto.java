@@ -14,10 +14,6 @@ public class PersonDto {
     public static final String FIND_BY_ID_SQL = "SELECT * FROM person  WHERE id = ?;";
     public static final String FIND_BY_NAME_SQL = "SELECT * FROM person WHERE first_name= ?;";
     private final Connection connection;
-    public String first_name;
-    public String last_name;
-    public String email;
-    public int phone;
     public PersonDto(Connection connection) { this.connection= connection;}
     public void create(Person person) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL);
