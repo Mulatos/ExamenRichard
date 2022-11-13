@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "course")
-
 public class Course {
 
     @Id
@@ -23,9 +22,9 @@ public class Course {
     @Column(name = "study_points")
     private String study_points;
 
-//    @ManyToMany(mappedBy = "course")
-//    private Set<Person> person = new HashSet<>();
-//    @OneToMany(mappedBy = "course")
+    @ManyToMany(mappedBy = "course")
+    private Set<Person> person = new HashSet<>();
+//    @OneToMany(mappedBy = "courses")
 //    private Set<Session> sessions;
 
     public Course() {

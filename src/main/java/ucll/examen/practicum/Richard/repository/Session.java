@@ -1,8 +1,6 @@
 package ucll.examen.practicum.Richard.repository;
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "session")
@@ -23,9 +21,12 @@ public class Session {
     @Column(name = "end_date_time")
     private Date end_date_time;
 
-    @ManyToOne
-    @JoinColumn( name = "course_id", nullable = false)
-    private Course courses;
+//    @ManyToOne
+//    @JoinColumn( name = "course_id", nullable = false)
+//    private Course courses;
+@OneToMany(cascade = CascadeType.ALL)
+@JoinColumn(name = "course_id",referencedColumnName = "id")
+private List<Course> comments = new ArrayList<>();
 
     public Session() {
     }
