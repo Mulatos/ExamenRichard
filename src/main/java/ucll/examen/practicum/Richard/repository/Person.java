@@ -12,8 +12,15 @@ import java.util.Set;
 @Table(name = "person")
 
 public class Person {
+    public Person(String first_name, String last_name, String email, int phone) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.phone = phone;
+    }
 
     @Id
+    @SequenceGenerator(name="SEQ_GEN", sequenceName="SEQ_JUST_FOR_TEST", allocationSize=1)
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
