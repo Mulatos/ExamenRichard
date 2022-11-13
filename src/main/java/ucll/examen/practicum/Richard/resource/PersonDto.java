@@ -4,6 +4,7 @@ import ucll.examen.practicum.Richard.repository.Person;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PersonDto {
@@ -38,9 +39,15 @@ public class PersonDto {
         preparedStatement.execute();
 
     }
-     public Person getById(Long id) throws SQLException {
+     public String getById(Long id) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL);
         preparedStatement.setLong(1,id);
+         ResultSet resultSet = preparedStatement.executeQuery();
+         if (resultSet.next()) {
+             Person person = new Person(resultSet.getLong(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getInt(5));
+             return person.toString();
+         }
+         return "geen persoon gevonden";
 
     }
 }

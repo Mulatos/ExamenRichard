@@ -19,7 +19,7 @@ public class PersonController {
     @ResponseBody
     public String test () throws SQLException {
         System.out.println("HONGER");
-        Person a = new Person( "bart", "koekje", "ik@hotmal", 123 );
+        Person a = new Person( 1L, "bart", "koekje", "ik@hotmal", 123 );
         personDto.create(a);
         return "Koekje";
 
@@ -39,10 +39,11 @@ public class PersonController {
     }
     @GetMapping("/api/v1/person/{id}")
     @ResponseBody
-    public String getPersoon(@PathVariable Long id) throws SQLException {
-        Person person = new Person(id, firstName, lastName,email,phone);
-        personDto.update(person);
-        return "persoon geupdate!";
+    public String getPersoon(@PathVariable int id) throws SQLException {
+
+        Long idLong = Long.valueOf(id);
+        return personDto.getById(idLong);
+
     }
 
 
